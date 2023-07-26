@@ -9,7 +9,12 @@ renderer.setSize(window.innerWidth,window.innerHeight)
 // add canvas to body
 document.body.appendChild(renderer.domElement)
 // to create a shape
-const geometry=new THREE.BoxGeometry(1,1,1)
+// const geometry=new THREE.BoxGeometry(1,1,1)
+// capsule geometry
+// const geometry=new THREE.CapsuleGeometry(1,1,50,8)
+// const geometry=new THREE.CircleGeometry(2,32)
+// const geometry=new THREE.ConeGeometry(2,2,50)
+const geometry=new THREE.CylinderGeometry(1.5,2,3,100);
 const material=new THREE.MeshBasicMaterial({color:'red'})
 // const cube=new THREE.Mesh(geometry,material);
 // if using Line to see in skeleton form
@@ -59,7 +64,9 @@ animate()
 function animate()
 {
     cube.position.x=5*Math.sin(q+=0.02)
-
+    cube.rotation.x+=0.05
+        cube.rotation.y+=0.05
+        cube.rotation.z+=0.05
     renderer.render(scene,camera)
     requestAnimationFrame(animate);
 }
