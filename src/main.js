@@ -12,10 +12,24 @@ document.getElementById('app').appendChild(renderer.domElement);
 var shaderMaterial=new THREE.ShaderMaterial({
     vertexShader:vshader,
     fragmentShader:fshader,
-    transparent:true
+    uniforms:{
+        parameter:{type:'f',value:0}
+    }
 })
-const geometry=new THREE.SphereGeometry(5,32,32)
+const geometry=new THREE.PlaneGeometry(45,60)
 var mesh=new THREE.Mesh(geometry,shaderMaterial)
 scene.add(mesh)
 
-renderer.render(scene,camera)
+
+animation()
+function animation()
+{
+    
+    shaderMaterial.uniforms.parameter.value+=0.5
+        console.log('here')
+    
+   
+    renderer.render(scene,camera)
+    requestAnimationFrame(animation);
+    
+}
